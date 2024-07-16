@@ -148,7 +148,6 @@
     <ClInclude Include="memoryreader.h" />
     <ClInclude Include="QAngle.h" />
     <ClInclude Include="trampolines.h" />
-    <ClInclude Include="transformations.h" />
     <ClInclude Include="util.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>

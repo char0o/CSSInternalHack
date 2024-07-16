@@ -47,9 +47,6 @@
     <ClInclude Include="memoryreader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="transformations.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
