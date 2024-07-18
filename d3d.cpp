@@ -16,7 +16,7 @@ d3dHelper::d3dHelper() {
     if (!hwnd) {
         MessageBox(0, L"[D3D] HWND Not Found", L":(", 0);
         return;
-    }
+    } 
     if (!this->getD3D9Device()) {
         MessageBox(0, L"[D3D] D3D9 Device Error", L":(", 0);
         return;
@@ -46,13 +46,6 @@ void APIENTRY d3dHelper::endSceneHook(LPDIRECT3DDEVICE9 p_pDevice) {
      
     Matrix m = I->engine->WorldToScreenMatrix();
     d3dHelper::DrawOutlineRect(p_pDevice, 20, 20, 40, 40, D3DCOLOR_ARGB(125, 255, 255, 255));
-    //d3dHelper::drawRectangle(p_pDevice, 100, 100, 100, 100, D3DCOLOR_ARGB(255, 255, 0, 0));
-
-    //p_pDevice->Clear(1, &r, D3DCLEAR_TARGET, DT_NOCLIP, D3DCOLOR_ARGB(255, 255, 255, 255), 0);
-
-    //OnlyFont->DrawTextA(NULL, buffer, -1, &DummyRectangle, DT_LEFT | DT_NOCLIP, D3DXCOLOR(255, 0, 0, 255));
-    //OnlyFont->Release();
-    // call original function using the trampoline
 
     trampEndScene(d3dDevice);
 }   
@@ -65,11 +58,11 @@ void d3dHelper::DrawOutlineRect(LPDIRECT3DDEVICE9 pDevice, float x, float y, flo
     // Define vertices for the rectangle (clockwise order)
     Vertex vertices[] =
     {
-        { (float)x, (float)y, 0.0f, 1.0f, color },
-        { (float)x + (float)width, (float)y, 0.0f, 1.0f, color },
-        { (float)x + (float)width, y + (float)height, 0.0f, 1.0f, color },
-        { (float)x, (float)y + (float)height, 0.0f, 1.0f, color },
-        { (float)x, (float)y, 0.0f, 1.0f, (float)color } // Closing the loop
+        { x, y, 0.0f, 1.0f, color },
+        { x + width, y, 0.0f, 1.0f, color },
+        { x + width, y + height, 0.0f, 1.0f, color },
+        { x, y + height, 0.0f, 1.0f, color },
+        { x, y, 0.0f, 1.0f, color } // Closing the loop
     };
     pDevice->SetVertexShader(NULL);
     pDevice->SetPixelShader(NULL);

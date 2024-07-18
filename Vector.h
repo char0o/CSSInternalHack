@@ -247,3 +247,9 @@ public:
 
 	float* operator[](int i) { return matrix[i]; }
 };
+
+struct Matrix3x4
+{
+public:
+	float matrix[3][4];
+};

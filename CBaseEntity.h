@@ -9,6 +9,12 @@ public:
 	{
 		return index == engine.GetLocalPlayer();
 	}
+	bool SetupBones(Matrix3x4* pBoneToWorldOut, int nMaxBones, int boneMask, float currentTime)
+	{
+		using FuncType = bool(__thiscall*)(void*, Matrix3x4*, int, int, float);
+		FuncType func = reinterpret_cast<FuncType*>(*(uintptr_t*)this + 0x4)[13];
+		return func(this, pBoneToWorldOut, nMaxBones, boneMask, currentTime);
+	}
 	int AliveStatus()
 	{
 		return getFirstByte(*reinterpret_cast<int*>(reinterpret_cast<int>(this) + 0x90));

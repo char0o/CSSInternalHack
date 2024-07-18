@@ -4,7 +4,7 @@
 #include "d3d.h"
 #include <string>
 #include <sstream>
-
+#include <cmath>
 
 class ESP
 {
@@ -39,10 +39,17 @@ public:
 			if (player->IsDormant())
 				continue;
 			Vector pos(0, 0, 0);
-			Vector pPos = player->GetPos();
+			
 			if (!I->engine->WorldToScreen(player->GetPos(), pos))
-				continue;		
-			d3dHelper::DrawOutlineRect(p_pDevice, pos.x - 20, pos.y - 150, 40, 80, D3DCOLOR_ARGB(125, 255, 255, 255));
+				continue;
+			Vector pPos = player->GetPos();
+			Vector headPos = pPos + Vector(0, 0, 72);
+			Vector headScreenPos(0, 0, 0);
+			if (!I->engine->WorldToScreen(headPos, headScreenPos))
+				continue;
+			float boxHeight = abs(headScreenPos.y - pos.y);
+			float boxWidth = boxHeight / 2.6;
+			d3dHelper::DrawOutlineRect(p_pDevice, headScreenPos.x - 15, headScreenPos.y, boxWidth, boxHeight, D3DCOLOR_ARGB(125, 255, 255, 255));
 			//I->debugOverlay->AddBoxOverlay(player->GetPos(), Vector(-20, -20, 0), Vector(20, 20, 60), QAngle(0, 0, 0), 200, 0, 0, 5, 0.1);
 		}
 	}
